@@ -1,0 +1,63 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: basic-project
+  # MySQL
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/xzh?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&serverTimezone=GMT%2B8&zeroDateTimeBehavior=CONVERT_TO_NULL
+      username: root
+      password: 123456
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filters: stat,config
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      useGlobalDataSourceStat: true
+      # open druid
+      aop-patterns: com.xzh.basic.*
+      web-stat-filter:
+        enabled: true
+        session-stat-enable: true
+        session-stat-max-count: 1000
+        principal-session-name: admin
+        principal-cookie-name: admin
+        profile-enable: true
+        url-pattern: /*
+      stat-view-servlet:
+        enabled: true
+        reset-enable: true
+        url-pattern: /druid/*
+        login-username: admin
+        login-password: admin
+        allow: 127.0.0.1
+  aop:
+    proxy-target-class: true
+
+# Mybatis
+mybatis:
+  configuration:
+    jdbc-type-for-null: null
+    mapUnderscoreToCamelCase: true
+  type-aliases-package: com.xzh.basic.dao.pojo.*
+  mapper-locations: classpath:mapper/**/*.xml
+
+# mapper dir
+mapper:
+  mappers: com.xzh.basic.config.BaseMapper
+  not-empty: false
+  identity: MYSQL

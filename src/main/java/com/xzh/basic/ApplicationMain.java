@@ -2,6 +2,7 @@ package com.xzh.basic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import tk.mybatis.spring.annotation.MapperScan;
 
 /**
  * 启动
@@ -10,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date: 2019/10/11 10:56
  */
 @SpringBootApplication
+@MapperScan(basePackages = "com.xzh.basic.dao.mapper")
 public class ApplicationMain {
 
     public static void main(String[] args) {
