@@ -25,7 +25,7 @@
         <javaClientGenerator targetPackage="com.xzh.basic.dao.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
 
         <!--已生成的表-->
-        <table tableName="user" domainObjectName="User">
+        <table tableName="phone_number" domainObjectName="PhoneNumber">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 

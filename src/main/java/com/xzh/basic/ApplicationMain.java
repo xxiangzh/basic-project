@@ -2,6 +2,7 @@ package com.xzh.basic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import tk.mybatis.spring.annotation.MapperScan;
 
 /**
@@ -10,6 +11,7 @@ import tk.mybatis.spring.annotation.MapperScan;
  * @author: 向振华
  * @date: 2019/10/11 10:56
  */
+@EnableScheduling
 @SpringBootApplication
 @MapperScan(basePackages = "com.xzh.basic.dao.mapper")
 public class ApplicationMain {
